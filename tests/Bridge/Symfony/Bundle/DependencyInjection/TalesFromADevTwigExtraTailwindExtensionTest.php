@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace TalesFromADev\Twig\Extra\Tailwind\Tests\Bundle\DependencyInjection;
+namespace TalesFromADev\Twig\Extra\Tailwind\Tests\Bridge\Symfony\Bundle\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
-use TalesFromADev\Twig\Extra\Tailwind\Bundle\DependencyInjection\TwigTailwindExtraExtension;
+use TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\DependencyInjection\TalesFromADevTwigExtraTailwindExtension;
 use TalesFromADev\Twig\Extra\Tailwind\TailwindExtension;
 use TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime;
 
-final class TwigTailwindExtraExtensionTest extends TestCase
+final class TalesFromADevTwigExtraTailwindExtensionTest extends TestCase
 {
     public function testDefaultConfiguration()
     {
         $container = new ContainerBuilder(new ParameterBag([
             'kernel.debug' => false,
         ]));
-        $container->registerExtension(new TwigTailwindExtraExtension());
-        $container->loadFromExtension('twig_tailwind_extra');
+        $container->registerExtension(new TalesFromADevTwigExtraTailwindExtension());
+        $container->loadFromExtension('tales_from_a_dev_twig_extra_tailwind');
         $container->getCompilerPassConfig()->setOptimizationPasses([]);
         $container->getCompilerPassConfig()->setRemovingPasses([]);
         $container->getCompilerPassConfig()->setAfterRemovingPasses([]);
