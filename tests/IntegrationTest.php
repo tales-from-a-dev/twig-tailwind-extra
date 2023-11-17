@@ -22,11 +22,13 @@ final class IntegrationTest extends IntegrationTestCase
     {
         return [
             new class() implements RuntimeLoaderInterface {
-                public function load($class)
+                public function load($class): ?TailwindRuntime
                 {
                     if (TailwindRuntime::class === $class) {
                         return new TailwindRuntime();
                     }
+
+                    return null;
                 }
             },
         ];
