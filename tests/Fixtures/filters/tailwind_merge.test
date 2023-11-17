@@ -1,0 +1,16 @@
+--TEST--
+"tailwind_merge" filter
+--TEMPLATE--
+{{ "text-red-500 text-blue-500"|tailwind_merge }}
+{{ "block inline"|tailwind_merge }}
+{{ classes|tailwind_merge }}
+{{ "tw-text-red-500 tw-text-blue-500"|tailwind_merge({prefix: 'tw-'}) }}
+--DATA--
+return [
+    'classes' => ['h-10', 'h-20'],
+]
+--EXPECT--
+text-blue-500
+inline
+h-20
+tw-text-blue-500
