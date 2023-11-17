@@ -20,6 +20,7 @@
     "php": ">=8.2",
     "gehrisandro/tailwind-merge-php": "^1.0",
     "symfony/cache": "^6.3",
+    "symfony/framework-bundle": "^6.3",
     "twig/twig": "^3.0"
   },
   "require-dev": {
