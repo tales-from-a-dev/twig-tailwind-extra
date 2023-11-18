@@ -14,13 +14,15 @@ composer require tales-from-a-dev/twig-tailwind-extra
 
 ### Symfony
 
-If you are using Symfony Flex, this is done automatically, otherwise , add the following lines to your `services.yaml`:
+If you are using Symfony Flex, this is done automatically, otherwise register the bundle into `config/bundles.php`:
 
-```yaml
-# services.yaml
+```php
+// config/bundles.php
 
-services:
-  TalesFromADev\Twig\Extra\Tailwind\TailwindExtension: null
+return [
+    // ...
+    TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\TalesFromADevTwigExtraTailwindBundle::class => ['all' => true],
+];
 ```
 
 ### Standalone
