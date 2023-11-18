@@ -19,13 +19,13 @@
   "require": {
     "php": ">=8.2",
     "gehrisandro/tailwind-merge-php": "^1.0",
-    "symfony/cache": "^6.3",
-    "symfony/framework-bundle": "^6.3",
+    "symfony/cache": "^6.3 || ^7.0",
+    "symfony/framework-bundle": "^6.3 || ^7.0",
     "twig/twig": "^3.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.38",
-    "symfony/phpunit-bridge": "^6.3"
+    "symfony/phpunit-bridge": "^6.3 || ^7.0"
   },
   "config": {
     "optimize-autoloader": true,
