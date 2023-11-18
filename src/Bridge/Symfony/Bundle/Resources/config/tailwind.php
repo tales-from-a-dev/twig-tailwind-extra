@@ -10,13 +10,17 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
+        ->set('twig.cache.tailwind')
+            ->parent('cache.app')
+            ->tag('cache.pool', ['name' => 'twig.cache'])
+
         ->set('twig.extension.tailwind', TailwindExtension::class)
-        ->tag('twig.extension')
+            ->tag('twig.extension')
 
         ->set('twig.runtime.tailwind', TailwindRuntime::class)
-        ->args([
-            service('twig.cache'),
-        ])
-        ->tag('twig.runtime')
+            ->args([
+                service('twig.cache.tailwind'),
+            ])
+            ->tag('twig.runtime')
     ;
 };
