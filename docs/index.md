@@ -33,6 +33,11 @@ If you use Twig as standalone, then you need to add the extension manually
 $extension = new TalesFromADev\Twig\Extra\Tailwind\TailwindExtension();
 
 $twig = new \Twig\Environment($loader);
+
+$twig->addRuntimeLoader(new FactoryRuntimeLoader([
+    TailwindRuntime::class => function () { return new TailwindRuntime; },
+]));
+
 $twig->addExtension($extension);
 ```
 
