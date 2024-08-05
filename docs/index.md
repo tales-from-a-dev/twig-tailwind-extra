@@ -21,7 +21,7 @@ If you are using Symfony Flex, this is done automatically, otherwise register th
 
 return [
     // ...
-    \TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\TalesFromADevTwigExtraTailwindBundle::class => ['all' => true],
+    TalesFromADev\Twig\Extra\Tailwind\Bridge\Symfony\Bundle\TalesFromADevTwigExtraTailwindBundle::class => ['all' => true],
 ];
 ```
 
