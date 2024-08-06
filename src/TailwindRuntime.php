@@ -22,7 +22,7 @@ final class TailwindRuntime implements RuntimeExtensionInterface
         $this->factory = TailwindMerge::factory()->withCache(new Psr16Cache($cache));
     }
 
-    public function merge(string|array $classes, array $configuration = []): string
+    public function merge(string|array|null $classes, array $configuration = []): string
     {
         return $this->factory
             ->withConfiguration($configuration)

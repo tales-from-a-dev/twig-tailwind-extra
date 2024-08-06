@@ -5,6 +5,7 @@
 {{ "block inline"|tailwind_merge }}
 {{ classes|tailwind_merge }}
 {{ "tw-text-red-500 tw-text-blue-500"|tailwind_merge({prefix: 'tw-'}) }}
+{{ null|tailwind_merge }}
 --DATA--
 return [
     'classes' => ['h-10', 'h-20'],
