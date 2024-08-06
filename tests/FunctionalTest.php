@@ -32,8 +32,7 @@ final class FunctionalTest extends TestCase
         $this->assertSame('tw-text-blue-500', $runtime->merge(['tw-text-red-500', 'tw-text-blue-500'], ['prefix' => 'tw-']));
     }
 
-
-    public function testItWillReturnEmptyStringIfSuppliedNull()
+    public function testItWillReturnEmptyStringIfSuppliedNull(): void
     {
         $runtime = new TailwindRuntime();
 
