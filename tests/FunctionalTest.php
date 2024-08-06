@@ -37,6 +37,6 @@ final class FunctionalTest extends TestCase
     {
         $runtime = new TailwindRuntime();
 
-        $this->assertSame('',$runtime->merge(null));
+        $this->assertSame('', $runtime->merge(null));
     }
 }
