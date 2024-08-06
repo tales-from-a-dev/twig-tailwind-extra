@@ -13,7 +13,7 @@ use TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime;
 
 final class TalesFromADevTwigExtraTailwindExtensionTest extends TestCase
 {
-    public function testDefaultConfiguration()
+    public function testDefaultConfiguration(): void
     {
         $container = new ContainerBuilder(new ParameterBag([
             'kernel.debug' => false,

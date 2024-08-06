@@ -30,9 +30,14 @@ return [
 If you use Twig as standalone, then you need to add the extension manually
 
 ```php
-$extension = new TalesFromADev\Twig\Extra\Tailwind\TailwindExtension();
+$extension = new \TalesFromADev\Twig\Extra\Tailwind\TailwindExtension();
 
 $twig = new \Twig\Environment($loader);
+
+$twig->addRuntimeLoader(new \Twig\RuntimeLoader\FactoryRuntimeLoader([
+    \TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime::class => fn () => new \TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime(),
+]));
+
 $twig->addExtension($extension);
 ```
 
