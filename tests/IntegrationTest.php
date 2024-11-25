@@ -21,7 +21,7 @@ final class IntegrationTest extends IntegrationTestCase
     protected function getRuntimeLoaders(): array
     {
         return [
-            new class() implements RuntimeLoaderInterface {
+            new class implements RuntimeLoaderInterface {
                 public function load($class): ?TailwindRuntime
                 {
                     if (TailwindRuntime::class === $class) {
@@ -35,6 +35,11 @@ final class IntegrationTest extends IntegrationTestCase
     }
 
     protected function getFixturesDir(): string
+    {
+        return __DIR__.'/Fixtures/';
+    }
+
+    protected static function getFixturesDirectory(): string
     {
         return __DIR__.'/Fixtures/';
     }
