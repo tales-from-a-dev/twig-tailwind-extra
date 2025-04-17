@@ -15,7 +15,7 @@ final class TailwindRuntime implements RuntimeExtensionInterface
 {
     private Factory $factory;
 
-    public function __construct(?CacheInterface $cache = null)
+    public function __construct(?CacheInterface $cache)
     {
         $cache ??= new FilesystemAdapter();
 
