@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-This extension requires **PHP 8.2+**, **Twig 3.0+** and **Tailwind 3.0+**.
+This extension requires **PHP 8.1+**, **Twig 3.0+** and **Tailwind 3.0+**.
 
 ## Installation
 
