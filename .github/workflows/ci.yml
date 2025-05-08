@@ -6,6 +6,7 @@ on:
 
 jobs:
   tests:
+    name: tests (PHP ${{ matrix.php-version }}) (Symfony ${{ matrix.symfony-version }})
 
     runs-on: ubuntu-latest
 
@@ -22,21 +23,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: php-setup
+      - name: 'Set up PHP'
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
 
-      - name: composer-install
+      - name: 'Install Composer dependencies'
         env:
           SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
         uses: 'ramsey/composer-install@v3'
         with:
           composer-options: '--optimize-autoloader'
 
-      - name: php-cs-fixer
+      - name: 'Run PHP-CS-Fixer'
         run: PHP_CS_FIXER_IGNORE_ENV=1 composer cs
 
-      - name: phpunit
+      - name: 'Run PHPUnit'
         run: composer test
