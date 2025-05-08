@@ -10,9 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      max-parallel: 10
       fail-fast: false
       matrix:
-        php-version: [ '8.2', '8.3', '8.4' ]
+        php-version: [ '8.1', '8.2', '8.3', '8.4' ]
+        symfony-version: [ '6.4.*', '7.2.*' ]
+        exclude:
+          - php-version: '8.1'
+            symfony-version: '7.2.*'
 
     steps:
       - uses: actions/checkout@v4
@@ -23,21 +28,12 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
 
-      - name: composer-validate
-        run: composer validate
-
-      - name: composer-cache
-        id: composer-cache
-        uses: actions/cache@v4
-        with:
-          path: vendor
-          key: ${{ runner.os }}-${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ matrix.php-version }}-composer-
-
       - name: composer-install
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
+        env:
+          SYMFONY_REQUIRE: ${{ matrix.symfony-version }}
+        uses: 'ramsey/composer-install@v3'
+        with:
+          composer-options: '--optimize-autoloader'
 
       - name: php-cs-fixer
         run: PHP_CS_FIXER_IGNORE_ENV=1 composer cs
