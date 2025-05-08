@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=8.2",
+    "php": ">=8.1",
     "gehrisandro/tailwind-merge-php": "^1.0",
     "symfony/cache": "^6.4 || ^7.0",
     "symfony/framework-bundle": "^6.4 || ^7.0",
