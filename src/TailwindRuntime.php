@@ -14,6 +14,7 @@ use Twig\Extension\RuntimeExtensionInterface;
 final class TailwindRuntime implements RuntimeExtensionInterface
 {
     private Factory $factory;
+    private TailwindMerge $defaultMerger;
 
     public function __construct(?CacheInterface $cache = null)
     {
@@ -24,6 +25,12 @@ final class TailwindRuntime implements RuntimeExtensionInterface
 
     public function merge(string|array|null $classes, array $configuration = []): string
     {
+        if ([] === $configuration) {
+            $this->defaultMerger ??= $this->factory->make();
+
+            return $this->defaultMerger->merge($classes);
+        }
+
         return $this->factory
             ->withConfiguration($configuration)
             ->make()
