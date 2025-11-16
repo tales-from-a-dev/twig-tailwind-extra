@@ -19,6 +19,10 @@ jobs:
         exclude:
           - php-version: '8.1'
             symfony-version: '7.2.*'
+        include:
+            - php-version: '8.4'
+              symfony-version: '8.0.0-RC1'
+              minimum-stability: 'RC'
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +32,11 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           coverage: xdebug
+          tools: composer:2.8, flex
+
+      - if: matrix.minimum-stability
+        name: 'Set minimum-stability for Composer'
+        run: composer config minimum-stability ${{ matrix.minimum-stability }}
 
       - name: 'Install Composer dependencies'
         env:
