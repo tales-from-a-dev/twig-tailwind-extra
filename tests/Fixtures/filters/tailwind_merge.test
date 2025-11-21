@@ -4,7 +4,7 @@
 {{ "text-red-500 text-blue-500"|tailwind_merge }}
 {{ "block inline"|tailwind_merge }}
 {{ classes|tailwind_merge }}
-{{ "tw-text-red-500 tw-text-blue-500"|tailwind_merge({prefix: 'tw-'}) }}
+{{ "tw:text-red-500 tw:text-blue-500"|tailwind_merge }}
 {{ null|tailwind_merge }}
 --DATA--
 return [
@@ -14,4 +14,4 @@ return [
 text-blue-500
 inline
 h-20
-tw-text-blue-500
+tw:text-blue-500

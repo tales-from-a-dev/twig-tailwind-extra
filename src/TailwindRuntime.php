@@ -7,34 +7,27 @@ namespace TalesFromADev\Twig\Extra\Tailwind;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Psr16Cache;
 use Symfony\Contracts\Cache\CacheInterface;
-use TailwindMerge\Factory;
-use TailwindMerge\TailwindMerge;
+use TalesFromADev\TailwindMerge\TailwindMerge;
 use Twig\Extension\RuntimeExtensionInterface;
 
 final class TailwindRuntime implements RuntimeExtensionInterface
 {
-    private Factory $factory;
-    private TailwindMerge $defaultMerger;
+    private TailwindMerge $merger;
 
-    public function __construct(?CacheInterface $cache = null)
-    {
+    public function __construct(
+        array $additionalConfiguration = [],
+        ?CacheInterface $cache = null,
+    ) {
         $cache ??= new FilesystemAdapter();
 
-        $this->factory = TailwindMerge::factory()->withCache(new Psr16Cache($cache));
+        $this->merger = new TailwindMerge(
+            additionalConfiguration: $additionalConfiguration,
+            cache: new Psr16Cache($cache),
+        );
     }
 
-    public function merge(string|array|null $classes, array $configuration = []): string
+    public function merge(string|array|null $classes): string
     {
-        if ([] === $configuration) {
-            $this->defaultMerger ??= $this->factory->make();
-
-            return $this->defaultMerger->merge($classes);
-        }
-
-        return $this->factory
-            ->withConfiguration($configuration)
-            ->make()
-            ->merge($classes)
-        ;
+        return $this->merger->merge($classes);
     }
 }

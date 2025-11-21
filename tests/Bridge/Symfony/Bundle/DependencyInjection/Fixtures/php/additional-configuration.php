@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+$container->loadFromExtension('tales_from_a_dev_twig_extra_tailwind', [
+    'tailwind_merge' => [
+        'additional_configuration' => [
+            'prefix' => 'tw',
+            'theme' => [],
+            'classGroups' => [
+                'fooKey' => ['otherKey'],
+                'otherKey' => ['fooKey', 'fooKey2'],
+            ],
+            'conflictingClassGroups' => [
+                'fooKey' => ['otherKey'],
+                'otherKey' => ['fooKey', 'fooKey2'],
+            ],
+        ],
+    ],
+]);

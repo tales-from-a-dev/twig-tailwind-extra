@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-This extension requires **PHP 8.1+**, **Twig 3.0+** and **Tailwind 3.0+**.
+This extension requires **PHP 8.1+**, **Twig 3.0+** and **Tailwind 4.0+**.
 
 ## Installation
 
@@ -46,24 +46,47 @@ $twig->addExtension($extension);
 The following filters are available
 
 * [TailwindExtension](./src/TailwindExtension.php)
-    * tailwind_merge() Integration of [TailwindMerge](https://github.com/gehrisandro/tailwind-merge-php) by [Sandro Gehri](https://github.com/gehrisandro)
+    * tailwind_merge() Integration of [tailwind-merge-php](https://github.com/tales-from-a-dev/tailwind-merge-php)
 
 ## Examples
 
-#### Default
+### Default
 
 ```twig
 {{ 'text-red-500 text-blue-500'|tailwind_merge }} // 'text-blue-500'
 ```
 
-#### With an array of classes
+### With an array of classes
 
 ```twig
 {{ ['block', 'inline']|tailwind_merge }} // 'inline'
 ```
 
-#### With a custom configuration
+### With a custom configuration
+
+#### Symfony
+
+```yaml
+# config/packages/tales_from_a_dev_twig_extra_tailwind.yaml
+
+tales_from_a_dev_twig_extra_tailwind:
+    tailwind_merge:
+        additional_configuration:
+            prefix: tw
+```
+
+#### Standalone
+
+```php
+$twig->addRuntimeLoader(new \Twig\RuntimeLoader\FactoryRuntimeLoader([
+    \TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime::class => fn () => new \TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime([
+        'prefix' => 'tw',
+    ]),
+]));
+```
+
+Then simply call the filter in your templates:
 
 ```twig
-{{ 'tw-text-red-500 tw-text-blue-500'|tailwind_merge({prefix: 'tw-'}) }} // 'tw-text-blue-500'
+{{ 'tw:text-red-500 tw:text-blue-500'|tailwind_merge }} // 'tw:text-blue-500'
 ```

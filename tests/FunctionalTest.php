@@ -25,11 +25,11 @@ final class FunctionalTest extends TestCase
         $this->assertSame('inline', $runtime->merge(['block', 'inline']));
     }
 
-    public function testItCanMergeWithConfiguration(): void
+    public function testItCanMergeWithAdditionalConfiguration(): void
     {
-        $runtime = new TailwindRuntime();
+        $runtime = new TailwindRuntime(['prefix' => 'tw']);
 
-        $this->assertSame('tw-text-blue-500', $runtime->merge(['tw-text-red-500', 'tw-text-blue-500'], ['prefix' => 'tw-']));
+        $this->assertSame('tw:text-blue-500', $runtime->merge(['tw:text-red-500', 'tw:text-blue-500']));
     }
 
     public function testItWillReturnEmptyStringIfSuppliedNull(): void
