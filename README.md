@@ -11,7 +11,7 @@ This extension provides Twig filters for [Tailwind](https://tailwindcss.com/).
 
 The following filters are available
 
-* `tailwind_merge()`: Integration of [TailwindMerge](https://github.com/gehrisandro/tailwind-merge-php) by [Sandro Gehri](https://github.com/gehrisandro)
+* `tailwind_merge()`: Integration of [tailwind-merge-php](https://github.com/tales-from-a-dev/tailwind-merge-php)
 
 ## Documentation
 
