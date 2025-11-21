@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use TalesFromADev\Twig\Extra\Tailwind\TailwindExtension;
 use TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime;
 
+use function Symfony\Component\DependencyInjection\Loader\Configurator\abstract_arg;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $container) {
@@ -19,6 +20,7 @@ return static function (ContainerConfigurator $container) {
 
         ->set('twig.runtime.tailwind', TailwindRuntime::class)
             ->args([
+                abstract_arg('additional configuration, set in TalesFromADevTwigExtraTailwindExtension'),
                 service('twig.cache.tailwind'),
             ])
             ->tag('twig.runtime')
