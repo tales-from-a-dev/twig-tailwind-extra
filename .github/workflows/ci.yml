@@ -6,7 +6,7 @@ on:
 
 jobs:
   tests:
-    name: tests (PHP ${{ matrix.php-version }}) (Symfony ${{ matrix.symfony-version }})
+    name: tests (PHP ${{ matrix.php-versions }}) (Symfony ${{ matrix.symfony-version }})
 
     runs-on: ubuntu-latest
 
@@ -14,18 +14,24 @@ jobs:
       max-parallel: 10
       fail-fast: false
       matrix:
-        php-version: [ '8.1', '8.2', '8.3', '8.4' ]
-        symfony-version: [ '6.4.*', '7.3.*' ]
+        php-versions: [ '8.1', '8.2', '8.3', '8.4', '8.5' ]
+        symfony-version: [ '6.4.*', '7.4.*', ]
         exclude:
-          - php-version: '8.1'
-            symfony-version: '7.3.*'
+          - php-versions: '8.1'
+            symfony-version: '7.4.*'
         include:
-            - php-version: '8.2'
-              symfony-version: '7.4.0-RC2'
-              minimum-stability: 'RC'
-            - php-version: '8.4'
-              symfony-version: '8.0.0-RC2'
-              minimum-stability: 'RC'
+            - php-versions: '8.4'
+              symfony-version: '8.0.*'
+            - php-versions: '8.5'
+              symfony-version: '8.0.*'
+            - php-versions: '8.4'
+              symfony-version: '8.1.*'
+              minimum-stability: 'dev'
+              allow-failure: true
+            - php-versions: '8.5'
+              symfony-version: '8.1.*'
+              minimum-stability: 'dev'
+              allow-failure: true
 
     steps:
       - uses: actions/checkout@v4
