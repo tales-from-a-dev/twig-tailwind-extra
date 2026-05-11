@@ -20,7 +20,7 @@
     "php": ">=8.1",
     "symfony/cache": "^6.4 || ^7.0 || ^8.0",
     "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0",
-    "tales-from-a-dev/tailwind-merge-php": "^0.2",
+    "tales-from-a-dev/tailwind-merge-php": "^0.3",
     "twig/twig": "^3.0"
   },
   "require-dev": {
