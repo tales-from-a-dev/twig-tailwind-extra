@@ -18,20 +18,13 @@ return static function (ContainerConfigurator $container) {
             ->parent('cache.system')
             ->tag('cache.pool')
 
-        ->set('twig.cache.tailwind.chain')
-            ->class(ChainAdapter::class)
-            ->args([[
-                inline_service(ArrayAdapter::class),
-                service('cache.twig.tailwind'),
-            ]])
-
         ->set('twig.extension.tailwind', TailwindExtension::class)
             ->tag('twig.extension')
 
         ->set('twig.runtime.tailwind', TailwindRuntime::class)
             ->args([
                 abstract_arg('additional configuration, set in TalesFromADevTwigExtraTailwindExtension'),
-                service('twig.cache.tailwind.chain'),
+                service('cache.twig.tailwind'),
             ])
             ->tag('twig.runtime')
     ;
