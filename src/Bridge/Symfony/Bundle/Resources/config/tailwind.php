@@ -14,15 +14,15 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 
 return static function (ContainerConfigurator $container) {
     $container->services()
-        ->set('twig.cache.tailwind')
-            ->parent('cache.app')
-            ->tag('cache.pool', ['name' => 'twig.cache'])
+        ->set('cache.twig.tailwind')
+            ->parent('cache.system')
+            ->tag('cache.pool')
 
         ->set('twig.cache.tailwind.chain')
             ->class(ChainAdapter::class)
             ->args([[
                 inline_service(ArrayAdapter::class),
-                service('twig.cache.tailwind'),
+                service('cache.twig.tailwind'),
             ]])
 
         ->set('twig.extension.tailwind', TailwindExtension::class)
