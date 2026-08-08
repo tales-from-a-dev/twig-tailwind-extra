@@ -30,4 +30,9 @@ final class TailwindRuntime implements RuntimeExtensionInterface
     {
         return $this->merger->merge($classes);
     }
+
+    public function classes(string|iterable|null $classes = null): TailwindClassList
+    {
+        return new TailwindClassList($this->merger, $classes ?? []);
+    }
 }
