@@ -13,6 +13,7 @@ final class TailwindExtension extends AbstractExtension
     {
         return [
             new TwigFilter('tailwind_merge', [TailwindRuntime::class, 'merge']),
+            new TwigFilter('tailwind_classes', [TailwindRuntime::class, 'classes']),
         ];
     }
 }

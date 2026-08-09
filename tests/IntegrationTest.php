@@ -6,6 +6,7 @@ namespace TalesFromADev\Twig\Extra\Tailwind\Tests;
 
 use TalesFromADev\Twig\Extra\Tailwind\TailwindExtension;
 use TalesFromADev\Twig\Extra\Tailwind\TailwindRuntime;
+use Twig\Extra\Html\HtmlExtension;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use Twig\Test\IntegrationTestCase;
 
@@ -15,6 +16,7 @@ final class IntegrationTest extends IntegrationTestCase
     {
         return [
             new TailwindExtension(),
+            new HtmlExtension(),
         ];
     }
 

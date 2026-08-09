@@ -1,0 +1,11 @@
+--TEST--
+"tailwind_classes" filter
+--TEMPLATE--
+{{ "px-4 py-2 bg-red-500 bg-blue-500"|tailwind_classes }}
+{{ html_attr({ class: "px-4 py-2 bg-blue-500"|tailwind_classes }, { class: "bg-red-500" }) }}
+{{ null|tailwind_classes }}
+--DATA--
+return []
+--EXPECT--
+px-4 py-2 bg-blue-500
+class="px-4 py-2 bg-red-500"
