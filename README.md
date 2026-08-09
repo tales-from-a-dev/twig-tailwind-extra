@@ -12,6 +12,7 @@ This extension provides Twig filters for [Tailwind](https://tailwindcss.com/).
 The following filters are available
 
 * `tailwind_merge()`: Integration of [tailwind-merge-php](https://github.com/tales-from-a-dev/tailwind-merge-php)
+* `tailwind_classes()`: Build a mergeable list of Tailwind classes for use with Twig's `html_attr()`/`html_attr_merge()`
 
 ## Documentation
 

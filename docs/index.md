@@ -47,6 +47,7 @@ The following filters are available
 
 * [TailwindExtension](./src/TailwindExtension.php)
     * tailwind_merge() Integration of [tailwind-merge-php](https://github.com/tales-from-a-dev/tailwind-merge-php)
+    * tailwind_classes() Build a `TailwindClassList` for mergeable Tailwind classes (implements Twig HTML-Extra's `MergeableInterface`)
 
 ## Examples
 
@@ -89,4 +90,19 @@ Then simply call the filter in your templates:
 
 ```twig
 {{ 'tw:text-red-500 tw:text-blue-500'|tailwind_merge }} // 'tw:text-blue-500'
+```
+
+### Tailwind classes
+
+Unlike `tailwind_merge`, which eagerly merges and returns a string, `tailwind_classes` returns a `TailwindClassList` object. The actual merge is deferred until the value is rendered, so classes coming from several merge steps (e.g. a component's default classes merged with caller-provided classes) are deduplicated in a single pass, with the right-most value winning conflicts.
+
+`TailwindClassList` implements Twig HTML-Extra's `MergeableInterface`, so it merges correctly through `html_attr()`/`html_attr_merge()`:
+
+```twig
+{{ 'px-4 py-2 bg-red-500 bg-blue-500'|tailwind_classes }} // 'px-4 py-2 bg-blue-500'
+
+{{ html_attr({ class: 'px-4 py-2 bg-blue-500'|tailwind_classes }, { class: 'bg-red-500' }) }}
+// class="px-4 py-2 bg-red-500"
+
+{{ null|tailwind_classes }} // (renders nothing, the attribute is omitted)
 ```
