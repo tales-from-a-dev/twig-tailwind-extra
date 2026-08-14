@@ -22,6 +22,10 @@ The bulk of the documentation is stored in the [`docs`](docs/index.md) directory
 * [Installation](docs/index.md#installation)
 * [Usage](docs/index.md#usage)
 
+## Versioning
+
+This extension follows [semantic versioning](https://semver.org/). The `tales-from-a-dev/tailwind-merge-php` constraint is moved in a minor release, so a minor may change merged output wherever the merger fixed a bug.
+
 ## Credits
 
 * [Romain Monteil](https://github.com/ker0x)
