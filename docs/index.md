@@ -92,6 +92,21 @@ Then simply call the filter in your templates:
 {{ 'tw:text-red-500 tw:text-blue-500'|tailwind_merge }} // 'tw:text-blue-500'
 ```
 
+#### Cache
+
+Merged results are kept in an in-memory cache holding 500 entries, in front of the Symfony cache pool. Size it through `cacheSize`, or set it to `0` to opt out:
+
+```yaml
+# config/packages/tales_from_a_dev_twig_extra_tailwind.yaml
+
+tales_from_a_dev_twig_extra_tailwind:
+    tailwind_merge:
+        additional_configuration:
+            cacheSize: 2000
+```
+
+Cached entries are keyed per configuration, so two differently configured merges never return each other's results.
+
 ### Tailwind classes
 
 Unlike `tailwind_merge`, which eagerly merges and returns a string, `tailwind_classes` returns a `TailwindClassList` object. The actual merge is deferred until the value is rendered, so classes coming from several merge steps (e.g. a component's default classes merged with caller-provided classes) are deduplicated in a single pass, with the right-most value winning conflicts.
