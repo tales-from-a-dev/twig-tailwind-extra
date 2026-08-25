@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TalesFromADev\Twig\Extra\Tailwind\Tests\Bridge\Symfony\Bundle\DependencyInjection;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -39,6 +40,7 @@ final class TalesFromADevTwigExtraTailwindExtensionTest extends TestCase
     /**
      * @dataProvider getFormats
      */
+    #[DataProvider('getFormats')]
     public function testAdditionalConfiguration(string $fileFormat): void
     {
         $container = $this->createContainer();

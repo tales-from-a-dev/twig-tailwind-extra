@@ -21,8 +21,8 @@
     "symfony/cache": "^6.4 || ^7.0 || ^8.0",
     "symfony/framework-bundle": "^6.4 || ^7.0 || ^8.0",
     "tales-from-a-dev/tailwind-merge-php": "^0.4",
-    "twig/html-extra": "^3.24",
-    "twig/twig": "^3.0"
+    "twig/html-extra": "^3.24 || ^4.0",
+    "twig/twig": "^3.0 || ^4.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.38",
