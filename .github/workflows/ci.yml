@@ -27,10 +27,12 @@ jobs:
             - php-versions: '8.4'
               symfony-version: '8.1.*'
               minimum-stability: 'dev'
+              phpunit-version: '11.5'
               allow-failure: true
             - php-versions: '8.5'
               symfony-version: '8.1.*'
               minimum-stability: 'dev'
+              phpunit-version: '11.5'
               allow-failure: true
 
     steps:
@@ -58,4 +60,6 @@ jobs:
         run: PHP_CS_FIXER_IGNORE_ENV=1 composer cs
 
       - name: 'Run PHPUnit'
+        env:
+          SYMFONY_PHPUNIT_VERSION: ${{ matrix.phpunit-version }}
         run: composer test
